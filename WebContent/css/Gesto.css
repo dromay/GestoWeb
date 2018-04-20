@@ -1,0 +1,104 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#userpro {
+	paddign-top: 20%
+}
+
+#userpro2 {
+	paddign-top: 20%
+}
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content {
+	height: 1080px
+}
+
+#white {
+	background-color: white;
+}
+/* Set gray background color and 100% height */
+.sidenav {
+	background-color: rgb(107, 3, 3);
+	height: 100%;
+	color: black;
+}
+
+/* Set black background color, white text and some padding */
+header {
+	background-color: rgb(107, 3, 3);
+	color: rgb(255, 255, 255);
+	overflow-x: hidden;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+
+nav>a {
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+}
+
+nav>a:hover {
+	background-color: rgba(255, 255, 255, 0.25);
+	cursor: pointer;
+}
+
+#fof {
+	display: block;
+	width: 100%;
+	line-height: 1.6em;
+	text-align: center;
+}
+
+#fof .hgroup {
+	text-transform: uppercase;
+}
+
+#fof .hgroup h1 {
+	margin-bottom: 25px;
+	font-size: 80px;
+}
+
+#fof .hgroup h1 span {
+	display: inline-block;
+	margin-left: 5px;
+	padding: 2px;
+	border: 1px solid #CCCCCC;
+	overflow: hidden;
+}
+
+#fof .hgroup h1 span strong {
+	display: inline-block;
+	padding: 0 20px 20px;
+	border: 1px solid #CCCCCC;
+	font-weight: normal;
+}
+
+#fof .hgroup h2 {
+	font-size: 60px;
+}
+
+#fof .hgroup h2 span {
+	display: block;
+	font-size: 30px;
+}
+
+#fof p {
+	margin: 25px 0 0 0;
+	padding: 0;
+	font-size: 16px;
+}
+
+#fof p:first-child {
+	margin-top: 0;
+}

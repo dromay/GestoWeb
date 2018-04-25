@@ -165,16 +165,16 @@ public class UserServlet extends HttpServlet {
 					SessionManager.set(request, SessionAttributeNames.EMPRESA, empresa);
 					SessionManager.set(request, SessionAttributeNames.CONTACTO, contacto);
 					SessionManager.set(request, SessionAttributeNames.IDIOMA_CALL, idiomaCall);
-					target = ViewPaths.GESTION_SEARCH_SERVLET;
+					target = ViewPaths.GESTION_SEARCH_DETAIL;
 				} else {
 					request.setAttribute(AttributeNames.ERROR, Errors.NOT_FOUND_CALL);
-					target = ViewPaths.GESTION_SEARCH_SERVLET;
+					target = ViewPaths.GESTION_SEARCH_DETAIL;
 				}
 
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 				request.setAttribute(AttributeNames.ERROR, Errors.GENERIC_ERROR);
-				target = ViewPaths.GESTION_SEARCH_SERVLET;
+				target = ViewPaths.GESTION_SEARCH_DETAIL;
 			}
 			
 		} else if (Actions.DELETE_CALL.equalsIgnoreCase(action)) {

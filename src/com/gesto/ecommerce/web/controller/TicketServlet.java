@@ -83,7 +83,7 @@ public class TicketServlet extends HttpServlet {
 
 			if (cliente == null || contacto == null || usuario == null) {
 				request.setAttribute(AttributeNames.ERROR, Errors.NOT_CALL);
-				target = ViewPaths.GESTION_SEARCH_SERVLET;
+				target = ViewPaths.GESTION_SEARCH_DETAIL;
 			} else {
 				// Get the date today using Calendar object.
 				Date today = Calendar.getInstance().getTime();
@@ -106,10 +106,10 @@ public class TicketServlet extends HttpServlet {
 						locale.getLanguage());
 				if (cliente == null || contacto == null || usuario == null) {
 					request.setAttribute(AttributeNames.ERROR, Errors.NOT_CALL);
-					target = ViewPaths.GESTION_SEARCH_SERVLET;
+					target = ViewPaths.GESTION_SEARCH_DETAIL;
 				} else if (g.getIdCliente() != cliente.getIdCliente()) {
 					request.setAttribute(AttributeNames.ERROR, Errors.DIFFERENT_CALL);
-					target = ViewPaths.GESTION_SEARCH_SERVLET;
+					target = ViewPaths.GESTION_SEARCH_DETAIL;
 				} else {
 					// Get the date today using Calendar object.
 					Date today = Calendar.getInstance().getTime();
@@ -125,7 +125,7 @@ public class TicketServlet extends HttpServlet {
 			} catch (DataException | NumberFormatException e) {
 				request.setAttribute(AttributeNames.ERROR, Errors.MANAGEMENT_CREATE);
 				logger.error(Errors.MISSING_PARAMETER_ERROR, e);
-				target = ViewPaths.GESTION_SEARCH_SERVLET;
+				target = ViewPaths.GESTION_SEARCH_DETAIL;
 			}
 		}
 
@@ -348,14 +348,14 @@ public class TicketServlet extends HttpServlet {
 				}
 				if (gestiones.isEmpty()) {
 					request.setAttribute(AttributeNames.ERROR, Errors.NOT_FOUND_ERROR);
-					target = ViewPaths.GESTION_SEARCH_SERVLET;
+					target = ViewPaths.GESTION_SEARCH_DETAIL;
 
 				} else {
 					request.setAttribute(AttributeNames.GESTIONES, gestiones);
 					request.setAttribute(AttributeNames.TICKETS, ticketsG);
 					request.setAttribute(AttributeNames.EMPLEADOS, empleadosG);
 					request.setAttribute(AttributeNames.CLIENTES, clientesG);
-					target = ViewPaths.GESTION_SEARCH_SERVLET;
+					target = ViewPaths.GESTION_SEARCH_DETAIL;
 					if (logger.isDebugEnabled()) {
 						logger.debug("Result :" + ToStringUtil.toString(gestiones));
 					}
@@ -364,7 +364,7 @@ public class TicketServlet extends HttpServlet {
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 				request.setAttribute(AttributeNames.ERROR, Errors.GENERIC_ERROR);
-				target = ViewPaths.GESTION_SEARCH_SERVLET;
+				target = ViewPaths.GESTION_SEARCH_DETAIL;
 			}
 
 		}
@@ -385,14 +385,14 @@ public class TicketServlet extends HttpServlet {
 				}
 				if (tickets.isEmpty()) {
 					request.setAttribute(AttributeNames.ERROR, Errors.TICKET_NOT_FOUND);
-					target = ViewPaths.GESTION_SEARCH_SERVLET;
+					target = ViewPaths.GESTION_SEARCH_DETAIL;
 
 				} else {
 					request.setAttribute(AttributeNames.ID_GESTION, Long.valueOf(request.getParameter(ParameterNames.ID_GESTION)));
 					request.setAttribute(AttributeNames.TICKETS, tickets);
 					request.setAttribute(AttributeNames.EMPLEADOS, empleadosT);
 					request.setAttribute(AttributeNames.CONTACTOS, contactosT);
-					target = ViewPaths.GESTION_DETAILS_SERVLET;
+					target = ViewPaths.GESTION_DETAILS_DETAIL;
 					if (logger.isDebugEnabled()) {
 						logger.debug("Result :" + ToStringUtil.toString(tickets));
 					}
@@ -401,11 +401,11 @@ public class TicketServlet extends HttpServlet {
 			} catch (DataException e) {
 				logger.error(e.getMessage(), e);
 				request.setAttribute(AttributeNames.ERROR, Errors.GENERIC_ERROR);
-				target = ViewPaths.GESTION_SEARCH_SERVLET;
+				target = ViewPaths.GESTION_SEARCH_DETAIL;
 			} catch (NumberFormatException e) {
 				logger.error(e.getMessage(), e);
 				request.setAttribute(AttributeNames.ERROR, Errors.GENERIC_ERROR);
-				target = ViewPaths.GESTION_SEARCH_SERVLET;
+				target = ViewPaths.GESTION_SEARCH_DETAIL;
 			}
 
 		}
@@ -427,7 +427,7 @@ public class TicketServlet extends HttpServlet {
 			} catch (DataException e) {
 				logger.error(e.getMessage(), e);
 				request.setAttribute(AttributeNames.ERROR, Errors.GENERIC_ERROR);
-				target = ViewPaths.GESTION_SEARCH_SERVLET;
+				target = ViewPaths.GESTION_SEARCH_DETAIL;
 			}
 
 		}

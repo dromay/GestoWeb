@@ -2,22 +2,6 @@
 <%@ page
 	import="com.gesto.ecommerce.model.*, com.gesto.ecommerce.service.*, com.gesto.ecommerce.service.impl.*, java.util.*"%>
 
-<c:set var="error" value="${requestScope.error}" scope="page" />
-<c:set var="success" value="${requestScope.success}" scope="page" />
-<c:set var="gestiones" value="${requestScope.gestiones}" scope="page" />
-<c:set var="tickets" value="${requestScope.tickets}" scope="page" />
-<c:set var="empleados" value="${requestScope.empleados}" scope="page" />
-<c:set var="clientes" value="${requestScope.clientes}" scope="page" />
-
-
-<c:set var="idGestion" value="${requestScope.idgestion}" scope="page" />
-<c:set var="fechaInicio" value="${requestScope.fechainicio}" scope="page" />
-<c:set var="nombreEmpleado" value="${requestScope.nombreempleado}" scope="page" />
-<c:set var="apellidoEmpleado" value="${requestScope.apellidoempleado}" scope="page" />
-<c:set var="nombreCliente" value="${requestScope.nombrecliente}" scope="page" />
-<c:set var="doc" value="${requestScope.doccliente}" scope="page" />
-<c:set var="tlf" value="${requestScope.tlfcliente}" scope="page" />
-<c:set var="correo" value="${requestScope.correocliente}" scope="page" />
 
 <h1>
 	<fmt:message key="gestion" bundle="${messages}" />
@@ -36,7 +20,7 @@
 	</div>
 </c:if>
 
-<form action="/GestoWeb/TicketServlet" method="post">
+<form action="<%=ViewPaths.TICKET%>" method="post">
 	<input type="hidden" name="<%=ParameterNames.ACTION%>"
 		value="<%=ParameterNames.PRECREATE_GESTION%>" />
 	<button type="submit" class="btn btn-dark">
@@ -46,14 +30,14 @@
 <br>
 
 <div class="jumbotron">
-	<form action="/GestoWeb/TicketServlet" method="post">
+	<form action="<%=ViewPaths.TICKET%>" method="post">
 		<input type="hidden" name="<%=ParameterNames.ACTION%>"
 			value="<%=ParameterNames.SEARCH_GESTION%>" />
 		<div class="form-row">
 			<div class="form-group col-md-2">
 				<label for="idGestion">ID <fmt:message key="gestion"
 						bundle="${messages}" /></label> <input type="number" class="form-control"
-					id="idGestion" value="<c:out value="${idGestion}"/>"
+					id="idGestion" value="<c:out value="${idgestion}"/>"
 					name="<%=ParameterNames.ID_GESTION%>">
 			</div>
 			<div class="form-group col-md-2">
@@ -65,13 +49,13 @@
 			<div class="form-group col-md-2">
 				<label for="nombreCliente"><fmt:message key="cliente.nombre"
 						bundle="${messages}" /></label> <input type="text" class="form-control"
-					id="nombreCliente" value="<c:out value="${nombreCliente}"/>"
+					id="nombreCliente" value="<c:out value="${nombrecliente}"/>"
 					name="<%=ParameterNames.NOMBRE_CLIENTE%>">
 			</div>
 			<div class="form-group col-md-2">
 				<label for="codigoCliente"><fmt:message key="documento"
 						bundle="${messages}" /></label> <input type="text" class="form-control"
-					id="codigoCliente" value="<c:out value="${doc}"/>"
+					id="codigoCliente" value="<c:out value="${doccliente}"/>"
 					name="<%=ParameterNames.DOC_CLIENTE%>">
 			</div>
 		</div>
@@ -80,27 +64,27 @@
 				<label for="nombreEmpleado"><fmt:message
 						key="empleado.nombre" bundle="${messages}" /></label> <input type="text"
 					class="form-control" id="nombreEmpleado"
-					value="<c:out value="${nombreEmpleado}"/>"
+					value="<c:out value="${nombreempleado}"/>"
 					name="<%=ParameterNames.NOMBRE_EMPLEADO%>">
 			</div>
 			<div class="form-group col-md-2">
 				<label for="apellidoEmpleado"><fmt:message
 						key="empleado.apellido" bundle="${messages}" /></label> <input
 					type="text" class="form-control" id="apellidoEmpleado"
-					value="<c:out value="${apellidoEmpleado}"/>"
+					value="<c:out value="${apellidoempleado}"/>"
 					name="<%=ParameterNames.APELLIDO_EMPLEADO%>">
 			</div>
 			<div class="form-group col-md-4"></div>
 			<div class="form-group col-md-2">
 				<label for="tlf"><fmt:message key="cliente.telefono"
 						bundle="${messages}" /></label> <input type="text" class="form-control"
-					id="tlf" value="<c:out value="${tlf}"/>"
+					id="tlf" value="<c:out value="${tlfcliente}"/>"
 					name="<%=ParameterNames.TLF%>">
 			</div>
 			<div class="form-group col-md-2">
 				<label for="correo"><fmt:message key="cliente.correo"
 						bundle="${messages}" /></label> <input type="text" class="form-control"
-					id="correo" value="<c:out value="${correo}"/>"
+					id="correo" value="<c:out value="${correocliente}"/>"
 					name="<%=ParameterNames.CORREO%>">
 			</div>
 		</div>

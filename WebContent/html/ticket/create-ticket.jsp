@@ -1,18 +1,12 @@
 <%@include file="/html/common/header.jsp"%>
 
-	<c:set var="error" value="${requestScope.error}" scope="page"/>
-	<c:set var="success" value="${requestScope.success}" scope="page"/>
-	<c:set var="gestion" value="${requestScope.errorgestion}" scope="page"/>
-	<c:set var="comentario" value="${requestScope.errorcomentario}" scope="page"/>
-	<c:set var="idGestion" value="${requestScope.idgestion}" scope="page"/>
-	<c:set var="fechaInicio" value="${requestScope.fechainicio}" scope="page"/>
 	<c:set var="cliente" value="${sessionScope.client}" scope="page"/>
 	<c:set var="contacto" value="${sessionScope.contact}" scope="page"/>
 	
 	
 	<c:choose>
-		<c:when test="${not empty idGestion}">
-			<h1><fmt:message key="ticket.nuevo" bundle="${messages}"/> <fmt:message key="gestion" bundle="${messages}"/>#<c:out value="${idGestion}"/></h1>
+		<c:when test="${not empty idgestion}">
+			<h1><fmt:message key="ticket.nuevo" bundle="${messages}"/> <fmt:message key="gestion" bundle="${messages}"/>#<c:out value="${idgestion}"/></h1>
 		</c:when>	      
 		<c:otherwise>
 			<h1><fmt:message key="nuevo" bundle="${messages}"/> <fmt:message key="gestion" bundle="${messages}"/>/Ticket</h1>
@@ -71,17 +65,17 @@
 
 
 <div>
-	<form action="/GestoWeb/TicketServlet" method="post" >
+	<form action="<%=ViewPaths.TICKET%>" method="post" >
 		
 	<c:choose>
 		<c:when test="${not empty idGestion}">
 			<input type="hidden" name="<%=ParameterNames.ACTION%>" value="<%=ParameterNames.CREATE_TICKET%>"/>
-			<input type="hidden" name="<%=ParameterNames.FECHA_INICIO%>" value="<c:out value="${fechaInicio}"/>"/>
-			<input type="hidden" name="<%=ParameterNames.ID_GESTION%>" value="<c:out value="${idGestion}"/>"/>
+			<input type="hidden" name="<%=ParameterNames.FECHA_INICIO%>" value="<c:out value="${fechainicio}"/>"/>
+			<input type="hidden" name="<%=ParameterNames.ID_GESTION%>" value="<c:out value="${idgestion}"/>"/>
 		</c:when>	      
 		<c:otherwise>
 			<input type="hidden" name="<%=ParameterNames.ACTION%>" value="<%=ParameterNames.CREATE_GESTION%>"/>
-			<input type="hidden" name="<%=ParameterNames.FECHA_INICIO%>" value="<c:out value="${fechaInicio}"/>"/>
+			<input type="hidden" name="<%=ParameterNames.FECHA_INICIO%>" value="<c:out value="${fechainicio}"/>"/>
 		</c:otherwise>
 	</c:choose>	
 		
@@ -100,7 +94,7 @@
 		    	<div class="form-group col-md-3">
 		    	</div>
 				<div class="alert alert-danger col-md-3">
-	    			<strong><fmt:message key="${gestion}" bundle="${messages}"/></strong>
+	    			<strong><fmt:message key="${errorgestion}" bundle="${messages}"/></strong>
 	 			</div>
 	 		</div>
 		</c:if>
@@ -117,7 +111,7 @@
 		    	<div class="form-group col-md-3">
 		    	</div>
 				<div class="alert alert-danger col-md-6">
-	    			<strong><fmt:message key="${comentario}" bundle="${messages}"/></strong>
+	    			<strong><fmt:message key="${errorcomentario}" bundle="${messages}"/></strong>
 	 			</div>
 	 		</div>
 		</c:if>
